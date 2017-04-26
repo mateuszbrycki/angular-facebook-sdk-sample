@@ -1,0 +1,19 @@
+{
+  "description" : "angular-facebook-sdk-sample",
+
+  "repository" :
+  {
+    "type" : "git",
+    "url" : "git@github.com:mateuszbrycki/angular-facebook-sdk-sample.git"
+  },
+
+  "license" : "Apache-2.0",
+
+  "dependencies":
+  {
+    "bootstrap" : "3.3.7",
+    "jquery-ui-dist" : "1.12.1",
+    "angular" : "1.6",
+    "dateformat" : "2.0"
+  }
+}

@@ -1,0 +1,93 @@
+<html ng-app="facebook-comments-feed">
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <title>Dashboard - Stream Facebook Comments Feed</title>
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="js/sdk.js" id="facebook-jssdk"></script>
+    <script src="../node_modules/dateformat/lib/dateformat.js"></script>
+
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1795776397407591',
+                xfbml: true,
+                version: 'v2.8',
+                cookie: true
+            });
+        };
+
+    </script>
+
+</head>
+
+<body>
+
+<div class="content" ng-controller="PostController">
+
+
+    <div id="comments-list">
+
+        <ul>
+            <li ng-repeat="comment in comments" id="{{ comment.id }}" class="comment"
+                ng-include="'./templates/comment.html'">
+            </li>
+        </ul>
+
+    </div>
+
+
+    <div id="feed-settings">
+
+        <div id="followed-post" ng-hide="showLoadPostForm">
+            <img src="{{ post_picture }}" width="50px" height="50px"/>
+            <div id="post-author-right">
+
+                <div class="author">
+                    <a href="https://facebook.com/{{ post.id }}" target="_blank">{{ post.from.name }}</a>
+                </div>
+
+                <div class="created-time">
+                    {{ post.created_time }}
+                </div>
+                <div class="message">
+                    {{ post.message }}
+                </div>
+            </div>
+        </div>
+
+
+
+        <form ng-submit="loadPost()" ng-hide="!showLoadPostForm">
+            <div class="form-group">
+                <label for="post-id">Post number:</label>
+                <input type="text" class="form-control" name="post-id" ng-model="postId"/>
+            </div>
+            <button type="submit" class="btn btn-default">Load</button>
+        </form>
+
+        <div id="load-next-container">
+            <div class="form-group" ng-hide="showLoadPostForm">
+                <button type="submit" class="btn btn-info" ng-click="loadComments()">
+                    Load next
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="core/configuration/configuration.js"></script>
+<script src="core/service/FacebookService.js"></script>
+<script src="core/controller/PostController.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<div class="header">
+
+    <img src="{{ comment.from.picture }}"/>
+
+    <div class="author-right">
+        <div class="author">
+            <a href="https://facebook.com/{{ comment.from.id }}" target="_blank">{{
+                comment.from.name }}</a>
+        </div>
+
+        <div class="created-time">
+            {{ comment.created_time }}
+        </div>
+    </div>
+</div>
+<div class="bottom">
+    <div class="message">
+        {{ comment.message }}
+    </div>
+</div>
